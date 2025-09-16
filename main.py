@@ -18,14 +18,14 @@ screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 pygame.display.set_caption("Minesweeper by lmToT27")
 clock = pygame.time.Clock()
 
-hover_img = pygame.image.load(p("assets/hover.png")).convert()
-default_img = pygame.image.load(p("assets/default.png")).convert()
-bomb_img = pygame.image.load(p("assets/bomb.png")).convert()
-flower_img = pygame.image.load(p("assets/flower.png")).convert()
-flag_img = pygame.image.load(p("assets/flag.png")).convert()
+hover_img = pygame.image.load(resource_path("assets/hover.png")).convert()
+default_img = pygame.image.load(resource_path("assets/default.png")).convert()
+bomb_img = pygame.image.load(resource_path("assets/bomb.png")).convert()
+flower_img = pygame.image.load(resource_path("assets/flower.png")).convert()
+flag_img = pygame.image.load(resource_path("assets/flag.png")).convert()
 revealed_texture = []
 for i in range(9):
-    revealed_texture.append(pygame.image.load(p("assets/" + str(i) + ".png")).convert())
+    revealed_texture.append(pygame.image.load(resource_path("assets/" + str(i) + ".png")).convert())
 
 grid = [[Tile(r, c, TILE_SIZE) for c in range(COLS)] for r in range(ROWS)]
 
@@ -42,16 +42,16 @@ remained_tiles = ROWS * COLS - BOMB_AMOUNT
 timer = 0
 pass_1_sec = pygame.USEREVENT + 1
 
-font = pygame.font.Font(p("assets/04B_19.ttf"), 15)
+font = pygame.font.Font(resource_path("assets/04B_19.ttf"), 15)
 color1 = [33, 255, 33]
 color2 = [255, 33, 33]
 
-default_button = pygame.image.load(p("assets/default_button.png")).convert()
+default_button = pygame.image.load(resource_path("assets/default_button.png")).convert()
 scale = 40 / default_button.get_height()
 default_button = pygame.transform.scale_by(default_button, scale)
 button_rect = default_button.get_rect(center = (SCREEN_WIDTH / 2, HEIGHT_OFFSET / 2))
 
-hovered_button = pygame.image.load(p("assets/hovered_button.png")).convert()
+hovered_button = pygame.image.load(resource_path("assets/hovered_button.png")).convert()
 scale = 40 / hovered_button.get_height()
 hovered_button = pygame.transform.scale_by(hovered_button, scale)
 button_is_hovered = False

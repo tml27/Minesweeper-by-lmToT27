@@ -1,4 +1,8 @@
 import os, sys
 
-def p(path):
-    return os.path.join(getattr(sys, '_MEIPASS', os.path.abspath(".")), path)
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+    return os.path.join(base_path, relative_path)
