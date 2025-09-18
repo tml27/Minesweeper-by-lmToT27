@@ -160,6 +160,12 @@ def PrintRemainedFlags():
     text = font.render("Flags: " + str(remained_flags), True, (r, g, b))
     screen.blit(text, text.get_rect(bottomleft = (WIDTH_OFFSET, HEIGHT_OFFSET - 10)))
 
+def PrintNoti():
+    global won
+    text = font.render (" You Win!!! " if won else " You Lose!!! ", True, "#59FF4D" if won else "#FF5A5A", "#4545457D")
+    rect = text.get_rect(center = (SCREEN_WIDTH / 2, (SCREEN_HEIGHT + HEIGHT_OFFSET - 50) // 2))
+    screen.blit(text, rect)
+
 def Hovering(pos):
     global button_is_hovered
     pos_x, pos_y = pos
@@ -250,6 +256,7 @@ while running:
 
     screen.fill("#242424")
     DrawGrid()
+    if won or lost: PrintNoti()
     PrintTime()
     PrintRemainedFlags()
     DrawButton()
